@@ -1,11 +1,14 @@
 package br.com.froza.screenmatch.models;
 
-public class Serie extends br.com.froza.screenmatch.models.Title {
+import br.com.froza.screenmatch.calculo.Classifiable;
+
+public class Serie extends br.com.froza.screenmatch.models.Title implements Classifiable {
     private int temporadas;
     private int episodiosPorTemporada;
     private boolean ativa;
     private int minutosPorEpisodio;
     private double duracaoEmMinutos;
+    private int visualizacoes;
 
     public int getEpisodiosPorTemporada() {
         return episodiosPorTemporada;
@@ -43,5 +46,18 @@ public class Serie extends br.com.froza.screenmatch.models.Title {
     @Override
     public int getDurationInMinutes() {
         return temporadas * episodiosPorTemporada * minutosPorEpisodio;
+    }
+
+    @Override
+    public int getClassification() {
+        if (visualizacoes < 50) return 1;
+        else if  (visualizacoes < 100) return 2;
+        else if (visualizacoes < 200) return 3;
+        else if (visualizacoes < 300) return 4;
+        else return 5;
+    }
+
+    public void setVisualizacoes(int visualizacoes) {
+        this.visualizacoes = visualizacoes;
     }
 }

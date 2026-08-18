@@ -1,3 +1,4 @@
+import br.com.froza.screenmatch.calculo.FiltroRecomendacao;
 import br.com.froza.screenmatch.calculo.TimeCalculator;
 import br.com.froza.screenmatch.models.Movie;
 import br.com.froza.screenmatch.models.Serie;
@@ -22,11 +23,16 @@ public class Main {
         serie1.setEpisodiosPorTemporada(12);
         serie1.setTemporadas(2);
         serie1.setMinutosPorEpisodio(40);
+        serie1.setVisualizacoes(120);
         System.out.println(serie1.getEpisodiosPorTemporada());
 
         TimeCalculator calc = new TimeCalculator();
         calc.include(serie1);
         calc.include(myMovie);
         System.out.println(calc.getTotalTime());
+
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtro(myMovie);
+        filtro.filtro(serie1);
     }
 }
