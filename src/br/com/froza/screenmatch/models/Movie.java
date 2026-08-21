@@ -5,6 +5,11 @@ import br.com.froza.screenmatch.calculo.Classifiable;
 public class Movie extends  br.com.froza.screenmatch.models.Title implements Classifiable {
     private String diretor;
 
+    // constructor
+    public Movie(String nome) {
+        this.setName(nome);
+    }
+
     public String getDiretor() {
         return diretor;
     }
@@ -16,5 +21,10 @@ public class Movie extends  br.com.froza.screenmatch.models.Title implements Cla
     @Override
     public int getClassification() {
         return (int) getRating()/2;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie: " + getName() + " (" + getLaunchYear() + ")";
     }
 }
